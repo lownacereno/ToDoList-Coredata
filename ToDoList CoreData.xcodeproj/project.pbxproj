@@ -16,6 +16,7 @@
 		143BDF9B29E0D7F8000C0EBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 143BDF9929E0D7F8000C0EBB /* LaunchScreen.storyboard */; };
 		143BDFA329E0DA1C000C0EBB /* ToDoListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143BDFA229E0DA1C000C0EBB /* ToDoListTableViewDataSource.swift */; };
 		143BDFA529E0DA30000C0EBB /* ToDoListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143BDFA429E0DA30000C0EBB /* ToDoListTableViewDelegate.swift */; };
+		143BDFA929E1B5C9000C0EBB /* ToDoListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 143BDFA829E1B5C9000C0EBB /* ToDoListProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		143BDF9C29E0D7F8000C0EBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		143BDFA229E0DA1C000C0EBB /* ToDoListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewDataSource.swift; sourceTree = "<group>"; };
 		143BDFA429E0DA30000C0EBB /* ToDoListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewDelegate.swift; sourceTree = "<group>"; };
+		143BDFA829E1B5C9000C0EBB /* ToDoListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				143BDF8F29E0D7F6000C0EBB /* ToDoListViewController.swift */,
 				143BDFA229E0DA1C000C0EBB /* ToDoListTableViewDataSource.swift */,
 				143BDFA429E0DA30000C0EBB /* ToDoListTableViewDelegate.swift */,
+				143BDFA829E1B5C9000C0EBB /* ToDoListProtocol.swift */,
 				143BDF9129E0D7F6000C0EBB /* Main.storyboard */,
 				143BDF9729E0D7F8000C0EBB /* Assets.xcassets */,
 				143BDF9929E0D7F8000C0EBB /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				143BDF9029E0D7F6000C0EBB /* ToDoListViewController.swift in Sources */,
+				143BDFA929E1B5C9000C0EBB /* ToDoListProtocol.swift in Sources */,
 				143BDFA329E0DA1C000C0EBB /* ToDoListTableViewDataSource.swift in Sources */,
 				143BDF8C29E0D7F6000C0EBB /* AppDelegate.swift in Sources */,
 				143BDF9629E0D7F6000C0EBB /* ToDoList_CoreData.xcdatamodeld in Sources */,

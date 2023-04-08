@@ -35,51 +35,22 @@ class ToDoListViewController: UIViewController{
     
     @objc func newTask(){
         var nameTaskEntry = UITextField()
-        
         let alert = UIAlertController(title: "Nueva", message: "Tarea", preferredStyle: .alert)
-        
         let ok = UIAlertAction(title: "Agregar", style: .default) { (_) in
             let newTask = Task(context: self.bodyTask)
             newTask.taskName = nameTaskEntry.text
             newTask.completed = false
-            
             self.taskList.append(newTask)
             self.saveTask()
-            
         }
         alert.addTextField{ textFieldAlert in
             textFieldAlert.placeholder = "Escribe tu nota aquí"
             nameTaskEntry = textFieldAlert
-            
         }
-        
         alert.addAction(ok)
-        
         present(alert, animated: true)
-        
     }
-    
-    func saveTask(){
-        do{
-            try bodyTask.save()
-        }catch{
-            print(error.localizedDescription)
-        }
-        self.tableView.reloadData()
-    }
-    
-    func readTask(){
-        let solicitud : NSFetchRequest<Task> = Task.fetchRequest()
-        
-        do{
-            taskList = try bodyTask.fetch(solicitud)
-        }catch{
-            print(error.localizedDescription)
-        }
-        
-    }
-    
-    
+ 
     private func tableViewSetup(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .white
@@ -92,11 +63,29 @@ class ToDoListViewController: UIViewController{
     private func tableViewConstraints(){
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+}
+
+extension ToDoListViewController: ToDoListProtocol{
+    func saveTask(){
+        do{
+            try bodyTask.save()
+        }catch{
+            print(error.localizedDescription)
+        }
+        self.tableView.reloadData()
+    }
     
+    func readTask(){
+        let solicitud : NSFetchRequest<Task> = Task.fetchRequest()
+        do{
+            taskList = try bodyTask.fetch(solicitud)
+        }catch{
+            print(error.localizedDescription)
+        }
+    }
 }
