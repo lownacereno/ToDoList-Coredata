@@ -9,7 +9,6 @@ class ToDoListViewController: UIViewController{
     var taskList = [Task]()
     let bodyTask = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    
     init(dataSourceTable: ToDoListTableViewDataSource, delegateTable: ToDoListTableViewDelegate){
         self.dataSource = dataSourceTable
         self.delegate = delegateTable
@@ -32,24 +31,6 @@ class ToDoListViewController: UIViewController{
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(newTask))
         
     }
-    
-    @objc func newTask(){
-        var nameTaskEntry = UITextField()
-        let alert = UIAlertController(title: "Nueva", message: "Tarea", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Agregar", style: .default) { (_) in
-            let newTask = Task(context: self.bodyTask)
-            newTask.taskName = nameTaskEntry.text
-            newTask.completed = false
-            self.taskList.append(newTask)
-            self.saveTask()
-        }
-        alert.addTextField{ textFieldAlert in
-            textFieldAlert.placeholder = "Escribe tu nota aquí"
-            nameTaskEntry = textFieldAlert
-        }
-        alert.addAction(ok)
-        present(alert, animated: true)
-    }
  
     private func tableViewSetup(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,6 +52,26 @@ class ToDoListViewController: UIViewController{
 }
 
 extension ToDoListViewController: ToDoListProtocol{
+    
+    @objc func newTask() {
+            var nameTaskEntry = UITextField()
+            let alert = UIAlertController(title: "Nueva", message: "Tarea", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Agregar", style: .default) { (_) in
+                let newTask = Task(context: self.bodyTask)
+                newTask.taskName = nameTaskEntry.text
+                newTask.completed = false
+                self.taskList.append(newTask)
+                self.saveTask()
+            }
+            alert.addTextField{ textFieldAlert in
+                textFieldAlert.placeholder = "Escribe tu nota aquí"
+                nameTaskEntry = textFieldAlert
+            }
+            alert.addAction(ok)
+            present(alert, animated: true)
+        }
+    
+    
     func saveTask(){
         do{
             try bodyTask.save()

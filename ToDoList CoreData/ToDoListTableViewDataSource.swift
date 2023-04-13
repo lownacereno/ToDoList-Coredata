@@ -16,11 +16,17 @@ extension ToDoListTableViewDataSource: UITableViewDataSource{
         guard let task = viewController?.taskList[indexPath.row] else {return UITableViewCell()}
         var listContentConfiguration = UIListContentConfiguration.cell()
         listContentConfiguration.text = task.taskName
-        listContentConfiguration.textProperties.color = task.completed ? .black : .blue
-        listContentConfiguration.secondaryText = task.completed ? "Completada" : "Por completar"
         listContentConfiguration.image = UIImage(systemName: "list.bullet.rectangle")
+        if task.completed == true{
+            listContentConfiguration.secondaryText = "Completada"
+            listContentConfiguration.textProperties.color = .black
+            cell.accessoryType = .checkmark
+        }else{
+            listContentConfiguration.secondaryText = "Por completar"
+            listContentConfiguration.textProperties.color = .blue
+            cell.accessoryType = .none
+        }
         cell.contentConfiguration = listContentConfiguration
-        cell.accessoryType = task.completed ? .checkmark : .none
         return cell
         
     }
